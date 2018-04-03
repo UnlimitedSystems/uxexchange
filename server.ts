@@ -1,5 +1,6 @@
 import { createSecureServer } from 'http2';
-import { createServer } from 'https';
+// import { createServer } from 'https';
+import { createServer } from 'http';
 import { route, parseArguments } from './ts-scripts/utils';
 import { readFileSync } from 'fs';
 const ip = require('my-local-ip')();
@@ -12,7 +13,6 @@ const privateKey = readFileSync('privatekey.pem').toString();
 const certificate = readFileSync('certificate.pem').toString();
 
 function createMyServer(port) {
-
     const connectionTypesHash = arrToHash(connectionTypes);
     const buildTypesHash = arrToHash(buildTypes);
 
@@ -53,19 +53,19 @@ function createSimpleServer({ port = 8000, type = 'dev', connection = 'mainnet' 
         route(connection, type)(req, res);
     };
 
-    const server = createServer({ key: privateKey, cert: certificate });
-    server.addListener('request', handler);
+    const server = createServer(handler);
     server.listen(port);
+
     console.log(`Listen port ${port}, type ${type}, connection ${connection} for simple server`);
-    console.log(`https://${ip}:${port}`);
+    console.log(`http://${ip}:${port}`);
 }
 
-createMyServer(8080);
-const args = parseArguments() || Object.create(null);
-if (args.startSimple) {
-    createSimpleServer(args);
-}
-
+// createMyServer(8080);
+createSimpleServer({});
+// const args = parseArguments() || Object.create(null);
+// if (args.startSimple) {
+//     createSimpleServer(args);
+// }
 
 function arrToHash(arr: Array<string>): Object {
     const result = Object.create(null);

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-echo "post checkout hook"
-npm install || exit 1
-echo "post checkout hook >> DONE"
+echo "post checkout hook (DISABLED)"
+# npm install || exit 1
+# echo "post checkout hook >> DONE"
 
-exit 0
+# exit 0

@@ -11,7 +11,6 @@ import { render } from 'less';
 import { minify } from 'html-minifier';
 import { get } from 'https';
 
-
 export const task: ITaskFunction = gulp.task.bind(gulp) as any;
 
 export function getBranch(): Promise<string> {
@@ -222,19 +221,34 @@ export function route(connectionType, buildType) {
     return function (req, res) {
 
         if (isTradingView(req.url)) {
-            get(`https://beta.wavesplatform.com/${req.url}`, (resp) => {
-                let data = '';
+            try {
+                // TODO: fix this later
+                let url = `https://beta.wavesplatform.com/${req.url}`;
+                let shouldFetch=false;
+                if (req.url=='charting_library.min.js') {
+                    url='http://127.0.0.1/tradingview/charting_library.min.js';
+                    shouldFetch=true;
+                }
 
-                // A chunk of data has been recieved.
-                resp.on('data', (chunk) => {
-                    data += chunk;
-                });
-
-                // The whole response has been received. Print out the result.
-                resp.on('end', () => {
-                    res.end(data);
-                });
-            });
+                console.info("fetching data from ", url);
+                if (shouldFetch) {
+                    get(url, (resp) => {
+                        let data = '';
+        
+                        // A chunk of data has been recieved.
+                        resp.on('data', (chunk) => {
+                            data += chunk;
+                        });
+        
+                        // The whole response has been received. Print out the result.
+                        resp.on('end', () => {
+                            res.end(data);
+                        });
+                    });
+                }
+            } catch (e) {
+                console.error("cannot fetch data for trading-view: " + e);
+            }
             return null;
         }
 
