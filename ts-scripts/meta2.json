@@ -137,7 +137,10 @@
 
       "assets": {
         "WAVES" : "WAVES",
-        "ETH": "3fVdr1oiX39uS82ZGUPnu7atNQtFHZfPnseRDUcDxrhp"        
+        "EUR": "2xnE3EdpqXtFgCP156qt1AbyjpqdZ5jGjWo3CwTawcux",
+        "USD": "HyFJ3rrq5m7FxdkWtQXkZrDat1F7LjVVGfpSkUuEXQHj",
+        "BTC": "Fmg13HEHJHuZYbtJq8Da8wifJENq8uBxDuWoP9pVe2Qe",
+        "ETH": "3fVdr1oiX39uS82ZGUPnu7atNQtFHZfPnseRDUcDxrhp"
       }
     },
     "mainnet": {
@@ -151,7 +154,11 @@
       "support": "https://support.wavesplatform.com",
 
       "assets": {
-        "WAVES" : "WAVES"
+        "WAVES" : "WAVES",
+        "EUR": "2xnE3EdpqXtFgCP156qt1AbyjpqdZ5jGjWo3CwTawcux",
+        "USD": "HyFJ3rrq5m7FxdkWtQXkZrDat1F7LjVVGfpSkUuEXQHj",
+        "BTC": "Fmg13HEHJHuZYbtJq8Da8wifJENq8uBxDuWoP9pVe2Qe",
+        "ETH": "3fVdr1oiX39uS82ZGUPnu7atNQtFHZfPnseRDUcDxrhp"
       }
     }
   }

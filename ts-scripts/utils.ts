@@ -225,12 +225,14 @@ export function route(connectionType, buildType) {
                 // TODO: fix this later
                 let url = `https://beta.wavesplatform.com/${req.url}`;
                 let shouldFetch=false;
+
+                console.info("fetching data from ", url);
+                
                 if (req.url=='charting_library.min.js') {
                     url='http://127.0.0.1/tradingview/charting_library.min.js';
                     shouldFetch=true;
                 }
 
-                console.info("fetching data from ", url);
                 if (shouldFetch) {
                     get(url, (resp) => {
                         let data = '';
