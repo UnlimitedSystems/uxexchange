@@ -1,4 +1,4 @@
-# UXExchange - Unlimited Exchange
+# UXchange - Unlimited Exchange
 
 UXExchange is an open source and decentralized exchange based on the code of the [WavesGUI](https://github.com/wavesplatform/WavesGUI/).
 
