@@ -22,8 +22,6 @@ function parseArguments() {
 
 const args=parseArguments();
 
-console.info(args);
-
 if (!args.to || !args.amount) {
     console.info("Usage: tx-cli <to> <value>");
     process.exit()
@@ -39,9 +37,7 @@ if (args.attach) {
     attach = args.attach;
 }
 
-// 10070000000
 const tx = {
-    // recipient: '3NNQxWojKFQT1gtR6fqefbq1hpwPijkDG2P',
     recipient: args.to,
     assetId: 'WAVES',
     amount: parseInt(args.amount),
